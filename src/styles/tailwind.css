@@ -1,0 +1,301 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Brand Colors */
+    --color-primary: #FF6B35; /* signature orange energy */
+    --color-primary-foreground: #FFFFFF; /* white */
+    --color-secondary: #FF8C42; /* softer orange accent */
+    --color-secondary-foreground: #FFFFFF; /* white */
+    --color-accent: #FFB366; /* subtle highlight */
+    --color-accent-foreground: #0A0A0A; /* deep black */
+    
+    /* Background System */
+    --color-background: #0A0A0A; /* deep black canvas */
+    --color-foreground: #FFFFFF; /* high contrast reading */
+    --color-surface: #1A1A1A; /* elevated content areas */
+    --color-card: #1A1A1A; /* elevated content areas */
+    --color-card-foreground: #FFFFFF; /* white */
+    --color-popover: #1A1A1A; /* elevated content areas */
+    --color-popover-foreground: #FFFFFF; /* white */
+    
+    /* Text Hierarchy */
+    --color-muted: #333333; /* muted backgrounds */
+    --color-muted-foreground: #CCCCCC; /* clear hierarchy */
+    
+    /* Interactive Elements */
+    --color-border: rgba(255, 107, 53, 0.2); /* subtle orange accent */
+    --color-input: #1A1A1A; /* elevated content areas */
+    --color-ring: #FF6B35; /* signature orange energy */
+    
+    /* Status Colors */
+    --color-success: #4ADE80; /* terminal green */
+    --color-success-foreground: #0A0A0A; /* deep black */
+    --color-warning: #F59E0B; /* amber attention */
+    --color-warning-foreground: #0A0A0A; /* deep black */
+    --color-error: #EF4444; /* clear red concern */
+    --color-error-foreground: #FFFFFF; /* white */
+    --color-destructive: #EF4444; /* clear red concern */
+    --color-destructive-foreground: #FFFFFF; /* white */
+    
+    /* CTA Optimization */
+    --color-cta: #FF4500; /* intense red-orange */
+    --color-cta-foreground: #FFFFFF; /* white */
+    
+    /* Typography */
+    --font-mono: 'JetBrains Mono', monospace;
+    --font-sans: 'Inter', sans-serif;
+    --font-code: 'Fira Code', monospace;
+    
+    /* Spacing System */
+    --spacing-xs: 0.5rem; /* 8px */
+    --spacing-sm: 0.75rem; /* 12px */
+    --spacing-md: 1.25rem; /* 20px */
+    --spacing-lg: 2rem; /* 32px */
+    --spacing-xl: 3.25rem; /* 52px */
+    
+    /* Shadow System */
+    --shadow-glow: 0 4px 20px rgba(255, 107, 53, 0.15);
+    --shadow-glow-intense: 0 0 30px rgba(255, 107, 53, 0.3);
+    --shadow-elevation: 0 20px 40px rgba(255, 107, 53, 0.3);
+  }
+
+  /* Light Theme */
+  [data-theme="light"] {
+    /* Brand Colors - keep consistent */
+    --color-primary: #FF6B35; /* signature orange energy */
+    --color-primary-foreground: #FFFFFF; /* white */
+    --color-secondary: #FF8C42; /* softer orange accent */
+    --color-secondary-foreground: #FFFFFF; /* white */
+    --color-accent: #FFB366; /* subtle highlight */
+    --color-accent-foreground: #0A0A0A; /* deep black */
+    
+    /* Light Background System */
+    --color-background: #FFFFFF; /* pure white */
+    --color-foreground: #0A0A0A; /* dark text */
+    --color-surface: #F8F9FA; /* light surface */
+    --color-card: #F8F9FA; /* light surface */
+    --color-card-foreground: #0A0A0A; /* dark text */
+    --color-popover: #F8F9FA; /* light surface */
+    --color-popover-foreground: #0A0A0A; /* dark text */
+    
+    /* Light Text Hierarchy */
+    --color-muted: #F1F3F4; /* light muted */
+    --color-muted-foreground: #666666; /* dark muted text */
+    
+    /* Light Interactive Elements */
+    --color-border: rgba(255, 107, 53, 0.3); /* orange accent border */
+    --color-input: #F8F9FA; /* light input bg */
+    --color-ring: #FF6B35; /* keep orange focus ring */
+    
+    /* Status Colors - adjusted for light theme */
+    --color-success: #059669; /* darker green for contrast */
+    --color-success-foreground: #FFFFFF; /* white text on green */
+    --color-warning: #D97706; /* darker amber */
+    --color-warning-foreground: #FFFFFF; /* white text */
+    --color-error: #DC2626; /* darker red */
+    --color-error-foreground: #FFFFFF; /* white text */
+    --color-destructive: #DC2626; /* darker red */
+    --color-destructive-foreground: #FFFFFF; /* white text */
+    
+    /* Light Shadow System */
+    --shadow-glow: 0 4px 20px rgba(255, 107, 53, 0.1);
+    --shadow-glow-intense: 0 0 20px rgba(255, 107, 53, 0.2);
+    --shadow-elevation: 0 10px 25px rgba(0, 0, 0, 0.1);
+  }
+  
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  /* Typography Styles */
+  .font-mono {
+    font-family: var(--font-mono);
+  }
+  
+  .font-code {
+    font-family: var(--font-code);
+  }
+  
+  /* Brand Animation Classes */
+  .blur-text-animation {
+    filter: blur(20px);
+    opacity: 0;
+    animation: blurReveal 2.5s ease-out forwards;
+  }
+  
+  @keyframes blurReveal {
+    to {
+      filter: blur(0px);
+      opacity: 1;
+    }
+  }
+  
+  .orange-glow {
+    text-shadow: 0 0 30px var(--color-primary);
+  }
+  
+  .pulse-orange {
+    animation: pulseOrange 2s infinite;
+  }
+  
+  @keyframes pulseOrange {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.2);
+      opacity: 0.7;
+    }
+  }
+  
+  /* Interactive Elements */
+  .glow-hover {
+    transition: all 0.3s ease-out;
+  }
+  
+  .glow-hover:hover {
+    box-shadow: var(--shadow-glow-intense);
+    transform: translateY(-2px);
+  }
+  
+  .perspective-hover {
+    transition: all 0.3s ease-out;
+  }
+  
+  .perspective-hover:hover {
+    transform: perspective(1000px) rotateX(15deg);
+  }
+  
+  /* Enhanced Fade-in Animations */
+  .fade-in-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  
+  .fade-in-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Enhanced fade-in animation with stagger effect */
+  .fade-in-stagger {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .fade-in-stagger.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  /* Fancy slide-in from left */
+  .slide-in-left {
+    opacity: 0;
+    transform: translateX(-60px);
+    transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .slide-in-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* Fancy slide-in from right */
+  .slide-in-right {
+    opacity: 0;
+    transform: translateX(60px);
+    transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .slide-in-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* Scale bounce animation */
+  .scale-bounce {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  .scale-bounce.visible {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  /* Rotate fade animation */
+  .rotate-fade {
+    opacity: 0;
+    transform: rotate(-10deg) scale(0.9);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .rotate-fade.visible {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+  
+  /* Code Syntax Highlighting */
+  .syntax-highlight {
+    position: relative;
+  }
+  
+  .syntax-highlight::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2px;
+    height: 100%;
+    background: var(--color-primary);
+    animation: blink 1s infinite;
+  }
+  
+  @keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+  }
+
+  /* Mobile Optimizations */
+  @media (max-width: 768px) {
+    .blur-text-animation {
+      animation-duration: 1.5s;
+    }
+    
+    .glow-hover:hover {
+      transform: none;
+    }
+  }
+  
+  /* Accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    .blur-text-animation,
+    .pulse-orange,
+    .glow-hover,
+    .perspective-hover,
+    .fade-in-up,
+    .fade-in-stagger,
+    .slide-in-left,
+    .slide-in-right,
+    .scale-bounce,
+    .rotate-fade {
+      animation: none;
+      transition: none;
+    }
+  }
+}
